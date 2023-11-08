@@ -16,10 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-
+from django.conf import settings
+from django.conf.urls.static import static
+from Employee.views import idCard
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('Employee/', include('Employee.urls')),
-    path('HR/',include('HR.urls')),
-    path('Administrator/',include('Administrator.urls'))
-]
+    path('<str:FirstName>/',idCard, name="empIdCards"),
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
