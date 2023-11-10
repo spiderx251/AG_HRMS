@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+    <title>View All Employees</title>
+</head>
+<body>
+   <div class="container">
+    <h1 style="text-align: center;"> All Employee Details </h1>
+    <hr>
+    <table>
+        {% comment %} <thead>
+            <tr>
+            <th>S.No</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Fathers Name</th>
+            <th>EmployeeId</th>
+            <th>Department</th>
+            <th>Designation </th>
+            <th>JoiningDate</th>
+            <th>phoneNumber</th>
+            <th>Mail_id</th>
+            <th>Salary </th>
+            <th>PAN</th>
+            <th>UAN</th>
+            <th>BankAccount</th>
+            <th>Image </th>
+        </tr>
+        </thead> {% endcomment %}
+
+
+        <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Employee ID</th>
+            <th>Designation</th>
+            <th>More Information</th>
+            
+        </tr>
+        
+        <tbody>
+            {% for employee in employes %}
+            <tr>
+                <td>{{employee.id}}</td>
+                <td> {{employee.FirstName}}{{employee.LastName}}</td>
+                <td>{{employee.EmployeeId}}</td>
+                <td>{{employee.Designation}}</td>
+                <td><a href="/Employee/{{employee.FirstName}}" target="_blank">clickhere</a></td>
+
+
+                {% comment %} <td>{{employee.id}}</td>
+                <td> {{employee.FirstName}}</td>
+                <td>{{employee.LastName }}</td>
+                <td>{{employee.FatherName}}</td>
+                <td>{{employee.EmployeeId}}</td>
+                <td>{{employee.Department.name}}</td>
+                <td>{{employee.Designation}}</td>
+                <td>{{employee.JoiningDate}}</td>
+                <td>{{employee.phoneNumber}}</td>
+                <td>{{employee.Mail_id}}</td>
+                <td>{{employee.Salary}}</td>
+                <td>{{employee.PAN}}</td>
+                <td>{{employee.UAN}}</td>
+                <td>{{employee.BankAccount}}</td>
+                <td>{{employee.Image}}</td>
+              {% endcomment %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+   </div>
+
+        
+
+   
+    
+    
+    
+</body>
+</html>
