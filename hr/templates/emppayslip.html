@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <title>payslip</title>
+    <style>
+      body {
+        background-color: #f8f9fa;
+        padding-top: 5rem;
+      }
+      
+      table {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #212529;
+      }
+      
+      th,td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid #dee2e6;
+      }
+      
+      th {
+        background-color: #007bff;
+        color: #fff;
+      }
+      
+      @media (max-width: 575.98px) {
+        table {
+          display: block;
+          width: 100%;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          border-spacing: 0;
+          border-collapse: collapse;
+        }
+      
+        th, td {
+          display: block;
+          padding: 8px;
+          text-align: left;
+        }
+      
+        th {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <h1>Employee Payslip Details</h1>
+          <table>
+            {% comment %} {% for pay in payslips %} {% endcomment %}
+                        <div class="d-flex flex-row">
+                            <div>
+                                <tr>
+                                <th>Field</th>
+                                <th>Value</th>
+                                </tr>
+                                <tr>
+                                <td>First Name</td>
+                                <td>{{ empdetails.Firstname }}</td>
+                                </tr>
+                                <tr>
+                                <td>Last Name</td>
+                                <td>{{ empdetails.Lastname }}</td>
+                                </tr>
+                                <tr>
+                                <td>EmployeeId</td>
+                                <td>{{ empdetails.EmployeeId }}</td>
+                                </tr>
+                                <tr>
+                                <td>Department</td>
+                                <td>{{ empdetails.Department }}</td>
+                                </tr>
+                                <tr>
+                                <td>Designation</td>
+                                <td>{{ empdetails.Designation }}</td>
+                                </tr>
+                            </div>
+                            <div>  
+                                <tr>
+                                <td>Joining Date</td>
+                                <td>{{ empdetails.JoiningDate }}</td>
+                                </tr>
+                                <tr>
+                                <td>Phone Number</td>
+                                <td>{{ empdetails.phoneNumber }}</td>
+                                </tr>
+                                <tr>
+                                <td>Email</td>
+                                <td>{{ empdetails.Mail_Id  }}</td>
+                                </tr>
+                                <tr>
+                                <td>Salary</td>
+                                <td>{{ empdetails.Salary }}</td>
+                                </tr>
+                                <tr>
+                                <td>PAN</td>
+                                <td>{{ empdetails.PAN }}</td>
+                                </tr>
+                                <tr>
+                                <td>UAN</td>
+                                <td>{{ empdetails.UAN }}</td>
+                                </tr>
+                                <tr>
+                                <td>Bank Account</td>
+                                <td>{{ empdetails.BankAccount }}</td>
+                                </tr>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row">
+                                <div>
+                                    <tr>
+                                    <th>Category</th>
+                                    <th>Amount</th>
+                                    </tr>
+                                    <tr>
+                                    <td>Basic Pay</td>
+                                    <td>{{ payslips.BasicPay }}</td>
+                                    </tr>
+                                    <tr>
+                                    <td>HRA</td>
+                                    <td>{{ payslips.HRA }}</td>
+                                    </tr>
+                                    <tr>
+                                    <td>DA</td>
+                                    <td>{{ payslips.DA }}</td>
+                                    </tr>
+                                    <tr>
+                                    <td>Special Allowances</td>
+                                    <td>{{ payslips.SpecialAllowance }}</td>
+                                    </tr>
+                                    <tr>
+                                    <td>Gross Salary</td>
+                                    <td>{{ payslips.GrossSalary }}</td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                    <td>PF Contribution</td>
+                                    <td>{{ payslips.PF_Contribution }}</td>
+                                    </tr>
+                                    <tr>
+                                    <td>Professional Tax</td>
+                                    <td>{{ payslips.ProfessionalTax }}</td>
+                                    </tr>
+                                    <tr>
+                                    <td>Other Deductions</td>
+                                    <td>{{ payslips.OtherDeductions }}</td>
+                                    </tr>
+                                    <tr>
+                                    <td>Gross Deductions</td>
+                                    <td>{{ payslips.GrossDeductions }}</td>
+                                    </tr>
+                                    <tr>
+                                    <td>Net Salary</td>
+                                    <td>{{ payslips.NetSalary }}</td>
+                                    </tr>
+                                </div>
+                            </div>
+                            {% comment %} {% endfor %} {% endcomment %}
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <p> ** This is system generated payslip and doesnot require signature and stamp </p>
+
+<div class='d-flex flex-row justify-content-center'>
+    <button id='downloadButton' class='btn btn-primary'>Download</button>
+</div>
+
+
+    <script>
+      document.getElementById('downloadButton').addEventListener('click', function () {
+          // Create a clone of the document element (excluding the download button)
+          var payslipContent = document.documentElement.cloneNode(true);
+          var downloadButton = payslipContent.querySelector('#downloadButton');
+          
+          if (downloadButton) {
+              // Remove the download button from the cloned document element
+              downloadButton.parentNode.removeChild(downloadButton);
+          }
+  
+          // Use html2pdf library to convert the cloned HTML content to PDF
+          html2pdf(payslipContent, {
+              margin: 10,
+              filename: 'payslip.pdf',
+              image: { type: 'jpeg', quality: 0.98 },
+              html2canvas: { scale: 2 },
+              jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+          });
+      });
+  </script>
+
+
+  <!-- Include html2pdf library  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+  <!--  Above line for downloading html content into pdf file -->
+  
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+          integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+          crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+          integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+          crossorigin="anonymous"></script>
+  
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+  </body>
+</html>
